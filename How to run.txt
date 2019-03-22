@@ -1,0 +1,16 @@
+
+1)First extract the code.. tops-master.zip
+
+2)In tops-master folder shows the "ws" folder the file containt the DB connection as well as API
+
+3)Copy that folder and pest in your local htdocs folder - so API will run properly
+
+4)To run Angular tops-master application it must need "node_module" folder so Run following command in that folder
+	"npm install"
+
+5)import the sql file in mysql DB (DB name `test`) -file present in tops-master folder
+
+6)Run application 
+	-Start apache and mysql
+	-Run angular application using "ng serve"
+	-Go to localhost:4200

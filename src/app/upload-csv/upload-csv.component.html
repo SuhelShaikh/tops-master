@@ -1,0 +1,49 @@
+
+<h4>Upload Inventory</h4>
+<div class="alert alert-success" *ngIf="msg" (click)="hideMsg()">{{message}}</div>
+<form  #model_form="ngForm"  id="model_form_id" (ngSubmit)="uploadCSV(model_form)" novalidate autocomplete="off">
+<div class="row" style="margin-top:10px">
+    <div class="col-sm-3"><label for="color">Upload CSV:<span style="color: red">*</span> </label></div>
+    <div class="col-sm-6">
+      <input type="file" class="form-control" id="picture1" name="picture1" ngModel required #modelPic1='ngModel' ngModel [(ngModel)]='picture1' (change)="fileChanged1($event)" accept="csv">
+      <app-customvalidation [displayError]="modelPic1.invalid && modelPic1.errors.required && 
+      (modelPic1.dirty || modelPic1.touched && model_form.submitted )" errorMsg="Please select pitcture1"></app-customvalidation>
+    </div>
+    
+</div>
+  <div class="row" style="margin-top:15px">
+  <div class="col-sm-3"></div>
+    <div class="col-sm-3"><button type="submit" class="btn btn-primary" [disabled]="model_form.invalid">Upload</button>
+    </div>
+  </div>
+</form>
+<br>
+<div *ngIf="mppingdiv">
+  <form #mapping_form="ngForm"  id="mapping_form_id" (ngSubmit)="checkMapping(mapping_form)" novalidate autocomplete="off">
+      <div class="table-responsive">
+<table class="table">
+              <tr *ngFor = "let tabledata of tablecol">
+                  <td>{{tabledata}}</td>
+                  <td><select name="field{{tabledata}}" id="field" required="" class="form-control" ngModel>
+                          <option value="">--Select--</option>
+                          <option *ngFor="let data of columnList" value="{{data}}" >{{data}}</option>
+                          
+                      </select>
+                      <input  name="original_col{{tabledata}}"  type="hidden" id="original_col" [(ngModel)]="tabledata" >
+                  </td>
+              </tr>
+              <tr>
+                  <td colspan="100%">
+                      <button type="submit" name="addField" id="addField" value="addField" class="btn btn-primary">
+                        Submit</button>
+                  </td>
+              </tr>
+
+          </table>
+  </div>
+      </form>
+    </div>
+
+
+ 
+

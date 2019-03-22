@@ -1,0 +1,28 @@
+<div class="container">
+  <br>
+<div class="row">
+<input type="text" name="searchtext" class="form-control" placeholder="Enter Search Text" [(ngModel)]="searchData">
+</div>
+<br>
+<div class="table-responsive">
+
+  <table class="table">
+    <tr>
+      <th>Title</th>
+      <th>SKU</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Quantity</th>
+    </tr>
+                <tr *ngFor="let data of productlist | searchDataRecord : searchData">
+                    <td>{{data.title}}</td>
+                    <td>{{data.sku}}</td>
+                    <td>{{data.short_description}}</td>
+                    <td>{{data.price}}</td>
+                    <td>{{data.quantity}}</td>
+
+                </tr>
+  
+            </table>
+    </div>
+    </div>
